@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+ xmlns:drawer="nativescript-telerik-ui/sidedrawer"
+ loaded="pageLoaded">
+    <drawer:RadSideDrawer>
+        <drawer:RadSideDrawer.mainContent>
+            <StackLayout>
+                <Label text="{{mainContentText}}" textWrap="true" />
+            </StackLayout>
+        </drawer:RadSideDrawer.mainContent>
+        <drawer:RadSideDrawer.drawerContent>
+            <StackLayout class="drawerContent">
+                <StackLayout class="headerContent">
+                    <Label text="Header" textWrap="true" />
+                </StackLayout>
+                <StackLayout class="drawerMenuContent">
+                    <Label text="Favourites" textWrap="true" />
+                    <Label text="Random Restaurant" textWrap="true" />
+                    <Label text="Get Location" textWrap="true" />
+                    <Label text="Hello" textWrap="true" />
+                </StackLayout>
+            </StackLayout>
+        </drawer:RadSideDrawer.drawerContent>
+    </drawer:RadSideDrawer>
+</Page>

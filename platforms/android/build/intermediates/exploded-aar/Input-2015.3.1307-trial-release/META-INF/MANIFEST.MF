@@ -1,0 +1,144 @@
+Manifest-Version: 1.0
+Created-By: 1.7.0_45 (Oracle Corporation)
+
+Name: res/values/values.xml
+SHA1-Digest: CA2ytWhDLzHLSaxu5qmoNFZDJus=
+
+Name: res/drawable/data_form_valid_icon.xml
+SHA1-Digest: 4QEAeCvvgrg6jdIXkUWcu17cAJo=
+
+Name: res/layout/data_form_segmented_editor.xml
+SHA1-Digest: t31jj28G3sel/1fPs/glWr76irE=
+
+Name: res/drawable/events_popup_bg.xml
+SHA1-Digest: 6Ph8rjabNH8bQiwS8OzTFte3Ca4=
+
+Name: res/layout/data_form_text_editor.xml
+SHA1-Digest: vPNaeLpcQjD10Dc8U2tPraXdI1E=
+
+Name: res/layout/data_form_decimal_editor.xml
+SHA1-Digest: pBMwDXN9pv7FX8+8PRGkXl/iYbo=
+
+Name: res/layout/data_form_editor_layout_1.xml
+SHA1-Digest: 88fSU3XkdMs85fleKQzpR31sJgA=
+
+Name: res/layout/data_form_radio_group_editor.xml
+SHA1-Digest: iCXr8PTJUzjvDIo6fUm8003t5ik=
+
+Name: res/layout/data_form_default_group_layout.xml
+SHA1-Digest: mb0wAAGB2WaNavilae1h0JL5Eiw=
+
+Name: res/layout/data_form_editor_validation_layout_1.xml
+SHA1-Digest: tac4plXQ4Nvci2OnEjkNWjsUV5o=
+
+Name: res/layout/data_form_editor_layout_2.xml
+SHA1-Digest: ARBitYuGWrtgsvp2dHiL+0B29ic=
+
+Name: res/values-sw480dp/values-sw480dp.xml
+SHA1-Digest: VgOJYP1LAxmbqTjnoy1pbSMg+ZE=
+
+Name: res/layout/data_form_autocomplete_editor.xml
+SHA1-Digest: OD3wiulEvAb+7xerthae3QuPgv4=
+
+Name: res/layout/data_form_expandable_group_layout.xml
+SHA1-Digest: W7o0zXpvsSvgU/TJ1hyNtDaO/UU=
+
+Name: res/drawable/dataform_number_picker_background.xml
+SHA1-Digest: psUcRvDKcyeCo8W9QJqKIczn+mE=
+
+Name: res/drawable/data_form_valid_background.xml
+SHA1-Digest: sok8oDl+ZWLuDHA2NT3hgXNmJgQ=
+
+Name: AndroidManifest.xml
+SHA1-Digest: yC19eMlK4mL31dnFxjwPRRKzoXs=
+
+Name: res/layout/data_form_time_editor.xml
+SHA1-Digest: z/FCOYwQnEEV1tK7CGKjvTHZV9w=
+
+Name: res/layout/data_form_text_viewer.xml
+SHA1-Digest: mv3kQrTALy/1kezirFdDhl0XuGU=
+
+Name: res/layout/data_form_date_editor.xml
+SHA1-Digest: 9/fde25Ip6uzCDPy21GKl2nQh2A=
+
+Name: res/drawable/data_form_segment_item.xml
+SHA1-Digest: f+gqAdBBXaYOBBZI3hrjnBkWAsw=
+
+Name: res/layout/data_form_toggle_button_editor.xml
+SHA1-Digest: fJvkDZjpRyxOhwmK7aSprvlYTX0=
+
+Name: res/layout/data_form_switch_editor.xml
+SHA1-Digest: mKWDnyxDROd3z4Erqf8R3/rTvxc=
+
+Name: res/layout/data_form_root_layout.xml
+SHA1-Digest: 8H96+16wCEAEUkc1H7OdJkuZlLc=
+
+Name: res/layout/data_form_checkbox_editor.xml
+SHA1-Digest: 42l29WBzH1n+OVbOYXNcN+gGWAw=
+
+Name: res/values-sw720dp/values-sw720dp.xml
+SHA1-Digest: g8mKexKYFSwbh//BoB2t5Bzmbv0=
+
+Name: res/layout/number_picker.xml
+SHA1-Digest: 2TTFS1924Wo4EM9c7RAd4cc146E=
+
+Name: classes.jar
+SHA1-Digest: suy4WNqPjaRM7VhUMETd2S/knKk=
+
+Name: res/layout/data_form_number_picker.xml
+SHA1-Digest: /OnoDny9B8+U5iOKwDLuQ1R6/Xc=
+
+Name: res/drawable/data_form_segment_checked.xml
+SHA1-Digest: ofkgZgZUZ2fAYpK89vHQSc/8/Do=
+
+Name: res/drawable/data_form_invalid_icon.xml
+SHA1-Digest: 8WU+D95JVzLh4V3MArEPcSwEmpw=
+
+Name: res/layout/data_form_list_editor.xml
+SHA1-Digest: SO//HfCzeqBokzYci9FcYGsLPuA=
+
+Name: aapt/AndroidManifest.xml
+SHA1-Digest: yC19eMlK4mL31dnFxjwPRRKzoXs=
+
+Name: res/values-sw320dp/values-sw320dp.xml
+SHA1-Digest: LFT2mmvcllhVeQx1wp7ZXcoC5sw=
+
+Name: res/layout/data_form_spinner_editor.xml
+SHA1-Digest: AeHWbsYDJtmpiS3fa6PTI/ICYnE=
+
+Name: res/layout/data_form_linear_layout.xml
+SHA1-Digest: mWL0p9f6avISn1ZWPZGuVDzIXWs=
+
+Name: res/layout/data_form_seek_bar_editor.xml
+SHA1-Digest: /YSdHUPlkhEuvKBiWpym5pY0TVM=
+
+Name: res/layout/data_form_group_layout.xml
+SHA1-Digest: 98rfYNUtK7yPKbfzWuVJC7CNIh4=
+
+Name: res/layout/popup_event.xml
+SHA1-Digest: dgTN0MJsRucLQWGAflmsxsMlAXg=
+
+Name: res/layout/inline_event.xml
+SHA1-Digest: HUcitJq7m7QsZRsfm/O8byW2dV8=
+
+Name: res/drawable/data_form_segment_unchecked.xml
+SHA1-Digest: /UCtWJZFKrx1aDoGC8SoJVPmMSo=
+
+Name: R.txt
+SHA1-Digest: 0WBROwZKJ4wE3EvYo0SK5fG+LEQ=
+
+Name: res/layout/data_form_list_editor_item.xml
+SHA1-Digest: sKZ24w3JITrq/hGP4WPwShXpg60=
+
+Name: res/drawable/data_form_invalid_background.xml
+SHA1-Digest: 2kBeeK+G5pMVF0TDaM11VG0cgD0=
+
+Name: res/layout/data_form_integer_editor.xml
+SHA1-Digest: PLlAFYGuMLHB7pwINFbB7hz+lLE=
+
+Name: res/drawable/data_form_list_item_states.xml
+SHA1-Digest: 1Dxh8RA2Hrz4t0iYm4P52scme2I=
+
+Name: res/layout/data_form_editor_header_layout_1.xml
+SHA1-Digest: NglXCpprvCiKEVCB+zCJu8G6GZ8=
+

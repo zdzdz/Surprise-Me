@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <Spinner android:id="@+id/data_form_spinner_editor"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="41.5dp"/>
+<!-- From: file:/C:/_J/jobs/BuildAll_native-script/workspace/Input/src/main/res/layout/data_form_spinner_editor.xml -->
