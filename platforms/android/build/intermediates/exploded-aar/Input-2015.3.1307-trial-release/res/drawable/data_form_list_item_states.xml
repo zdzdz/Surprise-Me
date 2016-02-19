@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/data_form_list_selected" android:state_checked="true"/>
-</selector><!-- From: file:/C:/_J/jobs/BuildAll_native-script/workspace/Input/src/main/res/drawable/data_form_list_item_states.xml -->

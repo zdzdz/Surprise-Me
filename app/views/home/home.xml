@@ -12,7 +12,7 @@
                     <Label text="Where would you eat today?" />
                 </StackLayout>
                 <StackLayout class="drawerMenuContent">
-                    <Label text="Favourites" textWrap="true" class="drawerMenuItem"/>
+                    <Label text="Favourites" textWrap="true" class="drawerMenuItem" tap="goToFavourites"/>
                     <Label text="Random Restaurant" textWrap="true" class="drawerMenuItem"/>
                     <Label text="Get Location" textWrap="true" 
                     class="drawerMenuItem" />

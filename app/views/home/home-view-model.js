@@ -10,15 +10,15 @@ class HomeViewModel extends observable.Observable {
         this.set("mainContentText", "Test");
     }
 
-    setDrawerTransition(transition){
-        let drawer = frameModule.topmost().getViewById("sideDrawer");
+    setDrawerTransition(view, transition){
+        let drawer = view.getViewById("sideDrawer");
         drawer.closeDrawer();
         drawer.drawerTransition = transition;
     }
 
     onScaleDownPusherTransitionTap(args){
         let drawer = frameModule.topmost().getViewById("sideDrawer");
-        this.setDrawerTransition(new drawerModule.ScaleDownPusherTransition());
+        //this.setDrawerTransition(new drawerModule.ScaleDownPusherTransition());
         drawer.showDrawer();
     }
 }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/root/Desktop/Surprise-Me/platforms/android/build/intermediates/exploded-aar/Input-2015.3.1307-trial-release/res/values-sw720dp/values-sw720dp.xml -->
-    <eat-comment/>
-    <dimen name="date_text_size_year_mode">12sp</dimen>
-</resources>
