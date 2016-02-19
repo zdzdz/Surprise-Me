@@ -1,0 +1,3 @@
+<Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd">
+    <Label text="Favourites" textWrap="true" />
+</Page>
