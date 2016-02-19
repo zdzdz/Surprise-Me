@@ -4,33 +4,24 @@ let observable = require("data/observable");
 let frameModule = require("ui/frame");
 let drawerModule = require("nativescript-telerik-ui/sidedrawer");
 
-let HomeViewModel = (function (_super) {
-    __extends(HomeViewModel, _super);
-    function HomeViewModel() {
-        _super.call(this);
+class HomeViewModel extends observable.Observable {
+    constructor(){
+        super();
         this.set("mainContentText", "Test");
-        }
-    
-    HomeViewModel.prototype.setDrawerTransition = function (transition) {
+    }
+
+    setDrawerTransition(transition){
         let drawer = frameModule.topmost().getViewById("sideDrawer");
         drawer.closeDrawer();
         drawer.drawerTransition = transition;
-    };
+    }
 
-    HomeViewModel.prototype.onScaleDownPusherTransitionTap = function (args) {
+    onScaleDownPusherTransitionTap(args){
         let drawer = frameModule.topmost().getViewById("sideDrawer");
         this.setDrawerTransition(new drawerModule.ScaleDownPusherTransition());
         drawer.showDrawer();
-    };
-    
-    return HomeViewModel;
-})(observable.Observable);
-
-// let onPushTransitionTap = function () {
-//         let drawer = frameModule.topmost().getViewById("sideDrawer");
-//         drawer.drawerTransition = new drawerModule.ScaleDownPusherTransition();
-//         drawer.showDrawer();
-//     };
+    }
+}
 
 exports.HomeViewModel = HomeViewModel;
 exports.homeViewModel = new HomeViewModel();
