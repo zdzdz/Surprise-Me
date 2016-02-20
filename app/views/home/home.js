@@ -6,19 +6,123 @@ let drawerModule = require("nativescript-telerik-ui/sidedrawer");
 
 function pageLoaded(args) {
     let page = args.object;
-    page.bindingContext = vmModule.homeViewModel;  
+    page.bindingContext = vmModule.homeViewModel;
     vmModule.homeViewModel.setDrawerTransition(page, new drawerModule.ScaleDownPusherTransition());
 }
 
-function goToFavourites(){
-	let topmost = frameModule.topmost();
-	topmost.navigate('./views/favourites/favourites');
+function goToFavourites() {
+    let topmost = frameModule.topmost();
+    topmost.navigate('./views/favourites/favourites');
 }
 
-function goToDetails(){
-	console.log("hi");
-	let topmost = frameModule.topmost();
-	topmost.navigate('./views/details/details');
+function goToDetails(args) {
+    let view = args.object;
+
+    view.animate({
+            translate: {
+                x: 0,
+                y: -50
+            },
+            duration: 500
+        })
+        .then(function() {
+            return view.animate({
+                translate: {
+                    y: 50,
+                    x: 0
+                },
+                duration: 400
+            });
+        })
+        .then(function() {
+            return view.animate({
+                translate: {
+                    y: -40,
+                    x: 0
+                },
+                duration: 350
+            });
+        })
+        .then(function() {
+            return view.animate({
+                translate: {
+                    y: 40,
+                    x: 0
+                },
+                duration: 300
+            });
+        })
+        .then(function() {
+            return view.animate({
+                translate: {
+                    y: -30,
+                    x: 0
+                },
+                duration: 250
+            });
+        })
+        .then(function() {
+            return view.animate({
+                translate: {
+                    y: 30,
+                    x: 0
+                },
+                duration: 200
+            });
+        })
+        .then(function() {
+            return view.animate({
+                translate: {
+                    y: -20,
+                    x: 0
+                },
+                duration: 150
+            });
+        })
+        .then(function() {
+            return view.animate({
+                translate: {
+                    y: 20,
+                    x: 0
+                },
+                duration: 100
+            });
+        }).then(function() {
+            return view.animate({
+                translate: {
+                    y: -10,
+                    x: 0
+                },
+                duration: 80
+            });
+        }).then(function() {
+            return view.animate({
+                translate: {
+                    y: 10,
+                    x: 0
+                },
+                duration: 80
+            });
+        }).then(function() {
+            return view.animate({
+                translate: {
+                    y: -10,
+                    x: 0
+                },
+                duration: 80
+            });
+        }).then(function() {
+            return view.animate({
+                translate: {
+                    y: 10,
+                    x: 0
+                },
+                duration: 80
+            });
+        }).then(function() {
+           let topmost = frameModule.topmost();
+    topmost.navigate('./views/details/details');
+        });
 }
 
 exports.pageLoaded = pageLoaded;
