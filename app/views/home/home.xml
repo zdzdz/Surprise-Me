@@ -1,10 +1,11 @@
 <Page loaded="pageLoaded" xmlns:drawer="nativescript-telerik-ui/sidedrawer" xmlns="http://www.nativescript.org/tns.xsd">
     <drawer:RadSideDrawer id="sideDrawer">
         <drawer:RadSideDrawer.mainContent>
-            <StackLayout>
-                <Button text="{{ mainContentText }}" textWrap="true" 
-                tap="{{ onScaleDownPusherTransitionTap }}"/>
-            </StackLayout>
+            <GridLayout rows="auto, *" columns="*">
+                <Image row="0" src="~/assets/location.png" textWrap="true" 
+                tap="{{ onScaleDownPusherTransitionTap }}" id="locationBtn"/>
+                <Image src="~/assets/restaurant.png" id="restBtn" row="1" tap="goToDetails" />
+            </GridLayout>
         </drawer:RadSideDrawer.mainContent>
         <drawer:RadSideDrawer.drawerContent>
             <StackLayout class="drawerContent">

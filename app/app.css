@@ -35,3 +35,15 @@ button {
 .drawerMenuItem {
 	padding: 10,0,10,0;
 }
+
+#restBtn {
+	width: 100;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+#locationBtn {
+	width: 200;
+	horizontal-align: center;
+	margin-top: 50;
+}

@@ -15,5 +15,12 @@ function goToFavourites(){
 	topmost.navigate('./views/favourites/favourites');
 }
 
+function goToDetails(){
+	console.log("hi");
+	let topmost = frameModule.topmost();
+	topmost.navigate('./views/details/details');
+}
+
 exports.pageLoaded = pageLoaded;
 exports.goToFavourites = goToFavourites;
+exports.goToDetails = goToDetails;
