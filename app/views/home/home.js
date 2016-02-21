@@ -4,6 +4,7 @@ let vmModule = require("./home-view-model");
 let frameModule = require('ui/frame');
 let drawerModule = require("nativescript-telerik-ui/sidedrawer");
 let logoUrl = null;
+let pictureId = null;
 
 function pageLoaded(args) {
     let page = args.object;
@@ -13,13 +14,29 @@ function pageLoaded(args) {
     // let everlive = new Everlive({
     //     appId: 'hxt7xps6k1h29bpf'
     // });
+    // pictures.getById('5bbee490-d892-11e5-b6b3-9d6e19b82cbf').then(function(res) {
+    //             let imageId = res.result[0].Image;
+    //             console.dir(res);
+    //             global.everlive.files.getDownloadUrlById(imageId)
+    //                 .then(function(downloadUrl) {
+    //                         console.log(downloadUrl);
+    //                         logoUrl = downloadUrl;
+    //                     },
+    //                     function(error) {
+
+    //                     });
+
+    //         });
 
 
     let restaurants = global.everlive.data('Restaurants');
+    let pictures = global.everlive.data('Pictures');
     restaurants.get()
         .then(function(data) {
             let logoId = data.result[0].Logo;
-            console.log(logoId);
+            pictureId = data.result[0].Pictures[0];
+            console.log(pictureId);
+
             global.everlive.files.getDownloadUrlById(logoId)
                 .then(function(downloadUrl) {
                         //console.log(downloadUrl);
@@ -29,6 +46,21 @@ function pageLoaded(args) {
 
                     });
         });
+
+    pictures.getById(pictureId).then(function(res) {
+        let imageId = res.result[0].Image;
+        console.dir(res);
+        global.everlive.files.getDownloadUrlById(imageId)
+            .then(function(downloadUrl) {
+                    console.log(downloadUrl);
+                    logoUrl = downloadUrl;
+                },
+                function(error) {
+
+                });
+
+    });
+
 }
 
 function goToFavourites() {
@@ -168,10 +200,10 @@ function goToDetails(args) {
             });
         }).then(function() {
             let topmost = frameModule.topmost();
-            //console.log(logoUrl);
+            console.log(logoUrl);
             var navigationEntry = {
                 moduleName: "./views/details/details",
-                context: {logoUrl: logoUrl},
+                context: { logoUrl: logoUrl },
                 animated: true,
                 backstackVisible: true
             };

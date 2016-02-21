@@ -2,6 +2,6 @@
 	navigatingTo="navigatedTo" actionBarHidden="true">
 	<StackLayout>
     <Label text="Details" textWrap="true" class="title" />
-    <Image id='logo' src="{{ logoUrl }}"/>
+    <Image id='logo' src="{{ logoUrl }}" tap="goToImageViewer"/>
 	</StackLayout>
 </Page>
