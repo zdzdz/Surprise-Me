@@ -23,6 +23,11 @@ function goToDetails(args) {
                 x: 0,
                 y: -50
             },
+            scale: {
+                y: 1.4,
+                x: 1.4
+            },
+            rotate: 360,
             duration: 500
         })
         .then(function() {
@@ -31,6 +36,11 @@ function goToDetails(args) {
                     y: 50,
                     x: 0
                 },
+                scale: {
+                    y: 1,
+                    x: 1
+                },
+                rotate: -360,
                 duration: 400
             });
         })
@@ -39,6 +49,10 @@ function goToDetails(args) {
                 translate: {
                     y: -40,
                     x: 0
+                },
+                scale: {
+                    y: 1.2,
+                    x: 1.2
                 },
                 duration: 350
             });
@@ -49,6 +63,10 @@ function goToDetails(args) {
                     y: 40,
                     x: 0
                 },
+                scale: {
+                    y: 1,
+                    x: 1
+                },
                 duration: 300
             });
         })
@@ -58,6 +76,10 @@ function goToDetails(args) {
                     y: -30,
                     x: 0
                 },
+                scale: {
+                    y: 1.1,
+                    x: 1.1
+                },
                 duration: 250
             });
         })
@@ -66,6 +88,10 @@ function goToDetails(args) {
                 translate: {
                     y: 30,
                     x: 0
+                },
+                scale: {
+                    y: 1,
+                    x: 1
                 },
                 duration: 200
             });
@@ -120,8 +146,8 @@ function goToDetails(args) {
                 duration: 80
             });
         }).then(function() {
-           let topmost = frameModule.topmost();
-    topmost.navigate('./views/details/details');
+            let topmost = frameModule.topmost();
+            topmost.navigate('./views/details/details');
         });
 }
 

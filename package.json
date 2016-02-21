@@ -6,6 +6,7 @@
 		}
 	},
 	"dependencies": {
+		"nativescript-geolocation": "0.0.8",
 		"nativescript-telerik-ui": "^0.2.4",
 		"tns-core-modules": "1.6.0"
 	}

@@ -2,9 +2,9 @@
     <drawer:RadSideDrawer id="sideDrawer">
         <drawer:RadSideDrawer.mainContent>
             <GridLayout rows="auto, *" columns="*">
-                <Image row="0" src="~/assets/location.png" textWrap="true" 
-                tap="{{ onScaleDownPusherTransitionTap }}" id="locationBtn"/>
-                <Image src="~/assets/restaurant.png" id="restBtn" row="1" tap="goToDetails" />
+                <Image row="0" src="res://location" textWrap="true" 
+                tap="{{ enableLocationTap }}" id="locationBtn"/>
+                <Image src="res://restaurant" id="restBtn" row="1" tap="goToDetails" />
             </GridLayout>
         </drawer:RadSideDrawer.mainContent>
         <drawer:RadSideDrawer.drawerContent>
