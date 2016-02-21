@@ -1,13 +1,13 @@
 'use strict';
 
-let vmModule = require("./imageViewer-view-model");
 let view = require('ui/core/view');
+let AbsoluteLayout = require('ui/layouts/absolute-layout')
+    .AbsoluteLayout;
 let initialWidth;
 let initialHeight;
 
 function pageLoaded(args) {
     let page = args.object;
-    page.bindingContext = vmModule.commentViewModel;
 
     attachEvents(page);
 }
@@ -20,23 +20,39 @@ function attachEvents(page) {
         height: initialHeight
     };
 
-    pic.width = initialSize.width;
-    pic.height = initialSize.height;
-
+    pic.top = 50;
+    pic.width = 360;
 
     pic.on('doubleTap', function(args) {
-        pic.width = initialSize.width;
-        pic.height = initialSize.height;
+        pic.width = 360;
     });
+
+    pic.on('pan', function(args) {
+        let top = AbsoluteLayout.getTop(pic);
+        let left = AbsoluteLayout.getLeft(pic);
+
+        top += args.deltaY;
+        left += args.deltaX;
+
+        AbsoluteLayout.setTop(pic, top);
+        AbsoluteLayout.setLeft(pic, left);
+    });
+
 
     pic.on('pinch', function(args) {
         console.log(args.scale);
         if (args.scale > 1) {
+        	if(pic.width > 2040 || pic.height > 1080){
+        		return;
+        	}
             pic.width += args.scale * 5;
             pic.height += args.scale * 5;
         } else if (args.scale < 1) {
-        	pic.width -= args.scale * 10;
-            pic.height -= args.scale * 10;
+        	if(pic.width < 30 || pic.height < 20){
+        		return;
+        	}
+            pic.width -= args.scale * 20;
+            pic.height -= args.scale * 20;
         }
     });
 }

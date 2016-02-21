@@ -1,6 +1,6 @@
 <Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd"
 	navigatingTo="navigatedTo">
-	<AbsoluteLayout>
-   		<Image src="{{ picture }}" id="imgViewer" stretch="fill" />
+	<AbsoluteLayout id="container">
+	    <Image src="{{ picture }}" id="imgViewer" />
    	</AbsoluteLayout>
 </Page>

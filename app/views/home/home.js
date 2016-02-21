@@ -4,29 +4,13 @@ let vmModule = require("./home-view-model");
 let frameModule = require('ui/frame');
 let drawerModule = require("nativescript-telerik-ui/sidedrawer");
 let logoUrl = null;
+let imageUrl = null;
 let pictureId = null;
 
 function pageLoaded(args) {
     let page = args.object;
     page.bindingContext = vmModule.homeViewModel;
     vmModule.homeViewModel.setDrawerTransition(page, new drawerModule.ScaleDownPusherTransition());
-
-    // let everlive = new Everlive({
-    //     appId: 'hxt7xps6k1h29bpf'
-    // });
-    // pictures.getById('5bbee490-d892-11e5-b6b3-9d6e19b82cbf').then(function(res) {
-    //             let imageId = res.result[0].Image;
-    //             console.dir(res);
-    //             global.everlive.files.getDownloadUrlById(imageId)
-    //                 .then(function(downloadUrl) {
-    //                         console.log(downloadUrl);
-    //                         logoUrl = downloadUrl;
-    //                     },
-    //                     function(error) {
-
-    //                     });
-
-    //         });
 
 
     let restaurants = global.everlive.data('Restaurants');
@@ -35,31 +19,32 @@ function pageLoaded(args) {
         .then(function(data) {
             let logoId = data.result[0].Logo;
             pictureId = data.result[0].Pictures[0];
-            console.log(pictureId);
 
             global.everlive.files.getDownloadUrlById(logoId)
                 .then(function(downloadUrl) {
-                        //console.log(downloadUrl);
                         logoUrl = downloadUrl;
                     },
                     function(error) {
 
                     });
-        });
+        }).then(function() {
+            pictures.get()
+                .then(function(res) {
+                    let imageId = res.result[0].Image;
+                    console.log(imageId);
+                    global.everlive.files.getDownloadUrlById(imageId)
+                        .then(function(downloadUrl) {
+                                console.log(downloadUrl);
+                                imageUrl = downloadUrl;
+                            },
+                            function(error) {
 
-    pictures.getById(pictureId).then(function(res) {
-        let imageId = res.result[0].Image;
-        console.dir(res);
-        global.everlive.files.getDownloadUrlById(imageId)
-            .then(function(downloadUrl) {
-                    console.log(downloadUrl);
-                    logoUrl = downloadUrl;
-                },
-                function(error) {
+                            });
 
                 });
+        });
 
-    });
+
 
 }
 
@@ -203,7 +188,7 @@ function goToDetails(args) {
             console.log(logoUrl);
             var navigationEntry = {
                 moduleName: "./views/details/details",
-                context: { logoUrl: logoUrl },
+                context: { logoUrl: logoUrl, imageUrl: imageUrl },
                 animated: true,
                 backstackVisible: true
             };

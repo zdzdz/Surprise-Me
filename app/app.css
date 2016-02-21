@@ -27,23 +27,34 @@ button {
 }
 
 .drawerMenuContent {
-	background-color: #00B82E;
-	font-size: 16;
-	padding: 10, 0, 10, 10;
+    background-color: #00B82E;
+    font-size: 16;
+    padding: 10, 0, 10, 10;
 }
 
 .drawerMenuItem {
-	padding: 10,0,10,0;
+    padding: 10, 0, 10, 0;
 }
 
 #restBtn {
-	width: 100;
-	horizontal-align: center;
-	vertical-align: center;
+    width: 100;
+    horizontal-align: center;
+    vertical-align: center;
 }
 
 #locationBtn {
-	width: 200;
-	horizontal-align: center;
-	margin-top: 50;
+    width: 200;
+    horizontal-align: center;
+    margin-top: 50;
+}
+
+.pictures {
+    width: 100;
+    height: 50;
+}
+
+#container {
+    width: 360;
+    height:700;
+    background-color: #000;
 }
