@@ -7,4 +7,12 @@ function pageLoaded(args) {
     page.bindingContext = vmModule.detailsViewModel;
 }
 
+function navigatedTo(args) {
+    var page = args.object;
+    page.bindingContext = page.navigationContext;
+
+    console.log(page.navigationContext.logoUrl);
+}
+
 exports.pageLoaded = pageLoaded;
+exports.navigatedTo = navigatedTo;

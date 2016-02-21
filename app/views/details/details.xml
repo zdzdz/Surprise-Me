@@ -1,3 +1,7 @@
-<Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd">
-    <Label text="Details" textWrap="true" />
+<Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd"
+	navigatingTo="navigatedTo" actionBarHidden="true">
+	<StackLayout>
+    <Label text="Details" textWrap="true" class="title" />
+    <Image id='logo' src="{{ logoUrl }}"/>
+	</StackLayout>
 </Page>

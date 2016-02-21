@@ -3,11 +3,32 @@
 let vmModule = require("./home-view-model");
 let frameModule = require('ui/frame');
 let drawerModule = require("nativescript-telerik-ui/sidedrawer");
+let logoUrl = null;
 
 function pageLoaded(args) {
     let page = args.object;
     page.bindingContext = vmModule.homeViewModel;
     vmModule.homeViewModel.setDrawerTransition(page, new drawerModule.ScaleDownPusherTransition());
+
+    // let everlive = new Everlive({
+    //     appId: 'hxt7xps6k1h29bpf'
+    // });
+
+
+    let restaurants = global.everlive.data('Restaurants');
+    restaurants.get()
+        .then(function(data) {
+            let logoId = data.result[0].Logo;
+            console.log(logoId);
+            global.everlive.files.getDownloadUrlById(logoId)
+                .then(function(downloadUrl) {
+                        //console.log(downloadUrl);
+                        logoUrl = downloadUrl;
+                    },
+                    function(error) {
+
+                    });
+        });
 }
 
 function goToFavourites() {
@@ -147,7 +168,14 @@ function goToDetails(args) {
             });
         }).then(function() {
             let topmost = frameModule.topmost();
-            topmost.navigate('./views/details/details');
+            //console.log(logoUrl);
+            var navigationEntry = {
+                moduleName: "./views/details/details",
+                context: {logoUrl: logoUrl},
+                animated: true,
+                backstackVisible: true
+            };
+            topmost.navigate(navigationEntry);
         });
 }
 
