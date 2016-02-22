@@ -2,30 +2,38 @@
 
 let vmModule = require("./comment-view-model");
 let textFieldModule = require("ui/text-field");
+let view = require("ui/core/view");
+let frameModule = require('ui/frame');
+//let textMultiline = require('ui/text-multi-line');
 let observableAuthor = require("data/observable");
 let observableComment = require("data/observable");
+let Toast = require("nativescript-toast");
 
-function pageLoaded(args) {
-  var page = args.object;
-  var objAuthor = new observableAuthor.Observable();
-  var objComment = new observableComment.Observable();
-  objComment.set("Comment", "Enter your comment here.");
-  objAuthor.set("Author", "Enter your name here.");
 
-  var bindingOptions = {
-    sourceProperty: "textSource",
-    targetProperty: "text",
-    twoWay: true
+
+var commentInfo = {
+    author: "", 
+    content: "", 
 };
 
-  page.bindingContext = objAuthor;
-  page.bindingContext = objComment; 
+var page;
+
+ function loadSignUpView (args)  {
+    page = args.object;
+    page.bindingContext = commentInfo;
 }
 
-function sendComment(args){
+ function sendComment(){
+    var author = commentInfo.author;
+    var content = commentInfo.content;
 
+    var toast = Toast.makeText("Comment Send!");
+	toast.show();
+
+	let topmost = frameModule.topmost();
+    topmost.goBack();
 }
 
-exports.pageLoaded = pageLoaded;
+exports.loadSignUpView = loadSignUpView;
 exports.sendComment = sendComment;
 

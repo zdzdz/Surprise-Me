@@ -1,9 +1,14 @@
-<Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd">
-    
-    <StackLayout orientation="vertical">
-    	<Label text="Add your Comment here" textWrap="true"/>
-   		<TextField id= "AuthorText" text="{{ Author }}" />
-   		<TextField id= "CommentText" text="{{ Comment }}" height="200"/>
-   		<Button text="Add Comment" colour="green" tap="sendComment" />
- 	</StackLayout>
+<Page loaded="loadSignUpView">
+    <StackLayout>
+        <StackLayout orientation="horizontal">
+            <Label text="Your Name" width="120"/>
+            <TextField text="{{author}}" width="200"/>
+        </StackLayout>
+        <StackLayout orientation="horizontal">
+            <Label text="Your Comment"  width="120" />
+            <TextMultiLine text="{{comment}}" width="200" height="200"/>
+        </StackLayout>
+        <Button tap="sendComment" id="sendCommentButton" text="Send" width="200"/>
+        <Label id="result" textWrap="true"/>
+    </StackLayout>
 </Page>
