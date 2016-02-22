@@ -1,3 +1,9 @@
 <Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd">
-    <Label text="Add Comment" textWrap="true" />
+    
+    <StackLayout orientation="vertical">
+    	<Label text="Add your Comment here" textWrap="true"/>
+   		<TextField id= "AuthorText" text="{{ Author }}" />
+   		<TextField id= "CommentText" text="{{ Comment }}" height="200"/>
+   		<Button text="Add Comment" colour="green" tap="sendComment" />
+ 	</StackLayout>
 </Page>
