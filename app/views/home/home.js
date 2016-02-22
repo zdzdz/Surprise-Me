@@ -8,15 +8,19 @@ let toastModule = require("nativescript-toast");
 let logoUrl = null;
 let imageUrl = null;
 let pictureId = null;
+let isFinished = false;
 
 function pageLoaded(args) {
     let page = args.object;
     page.bindingContext = vmModule.homeViewModel;
     vmModule.homeViewModel.setDrawerTransition(page, new drawerModule.ScaleDownPusherTransition());
+    
+}
 
-
-    let restaurants = global.everlive.data('Restaurants');
+function getRestaurants(){
+	let restaurants = global.everlive.data('Restaurants');
     let pictures = global.everlive.data('Pictures');
+
     restaurants.get()
         .then(function(data) {
             let logoId = data.result[0].Logo;
@@ -44,6 +48,8 @@ function pageLoaded(args) {
                             });
 
                 });
+        }).then(function(res){
+        	isFinished = true;
         });
 }
 
@@ -183,16 +189,21 @@ function goToDetails(args) {
                 duration: 80
             });
         }).then(function() {
-            let topmost = frameModule.topmost();
-            console.log(logoUrl);
-            var navigationEntry = {
-                moduleName: "./views/details/details",
-                context: { logoUrl: logoUrl, imageUrl: imageUrl },
-                animated: true,
-                backstackVisible: true
-            };
+            
             if (applicationSettings.getBoolean("hasLocation")) {
-                topmost.navigate(navigationEntry);
+            	getRestaurants();
+            	if(isFinished){
+            		let topmost = frameModule.topmost();
+            		//console.log(logoUrl);
+            		var navigationEntry = {
+                		moduleName: "./views/details/details",
+                		context: { logoUrl: logoUrl, imageUrl: imageUrl },
+               	 		animated: true,
+                		backstackVisible: true
+            		};
+
+                	topmost.navigate(navigationEntry);
+            	}
             } else {
             	let toast = toastModule.makeText('Find your location first!', 5000);
                 toast.show();

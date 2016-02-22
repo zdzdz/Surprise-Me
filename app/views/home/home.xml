@@ -9,7 +9,10 @@
                         <Label id="textLabel" left="100" top="10" textWrap="true" />
                     </AbsoluteLayout>
                 </GridLayout>
+                 <GridLayout rows="auto, 8*" columns="*" row="1">
+                    <Label text="Where would you eat today?" textWrap="true" row="0" id="quest" />  
                 <Image src="res://restaurant" id="restBtn" row="1" tap="goToDetails" />
+            </GridLayout>
             </GridLayout>
         </drawer:RadSideDrawer.mainContent>
         <drawer:RadSideDrawer.drawerContent>
