@@ -1,7 +1,6 @@
 <Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="navigatedTo" actionBarHidden="false">
     <StackLayout>
-    	<Button text="Add Comment" tap="goToComments" />
-    	
+        <Button text="Add Comment" tap="goToComments" />
         <Label text="{{ name }}" textWrap="true" class="title" />
         <Label text="{{ description }}" />
         <Label text="{{ stars }}" />
@@ -9,17 +8,20 @@
         <Label text="{{ location.longitude }}" />
         <Image id='logo' src="{{ logoUrl }}" tap="goToImageViewer" class="pictures" />
         <Image src="{{ imageUrl }}" tap="goToImageViewer" class="pictures" />
-        <!-- <ListView items="{{ commentsArr }}">
+        <ListView items="{{ commentsArr }}">
             <ListView.itemTemplate>
-                <Label text="{{ $value }}" textWrap="true" class="title" />
-                <Label text="{{ $value }}" textWrap="true" class="title" />
-            </ListView.itemTemplate>
-        </ListView> -->
-        <ListView items="{{ picturesUrlsArr }}">
-            <ListView.itemTemplate>
-                <Image src="{{ $value }}" width="50" height="30" tap="goToImageViewer" />
-                
+                <GridLayout rows="auto, auto" columns="*">
+                    <Label text="{{ $value.sender }}" textWrap="true" row="0" />
+                    <Label text="{{ $value.content }}" textWrap="true" row="1" />
+                </GridLayout>
             </ListView.itemTemplate>
         </ListView>
+       <!--  <ListView items="{{ picturesUrlsArr }}">
+            <ListView.itemTemplate>
+                <StackLayout>
+                    <Image src="{{ $value }}" width="200" height="100" tap="goToImageViewer" />
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView> -->
     </StackLayout>
 </Page>
