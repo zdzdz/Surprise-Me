@@ -5,8 +5,7 @@ let frameModule = require('ui/frame');
 
 function pageLoaded(args) {
     let page = args.object;
-    page.bindingContext = vmModule.detailsViewModel;
-
+    //page.bindingContext = vmModule.detailsViewModel;
 }
 
 function navigatedTo(args) {

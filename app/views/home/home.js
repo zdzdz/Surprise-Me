@@ -6,7 +6,7 @@ let drawerModule = require("nativescript-telerik-ui/sidedrawer");
 let applicationSettings = require("application-settings");
 let toastModule = require("nativescript-toast");
 let Everlive = require("../../everlive-sdk/everlive.all.min");
-let restaurants;
+let restaurantsDb;
 let logoUrl = null;
 let imageUrl = null;
 let stars = null;
@@ -19,7 +19,7 @@ let comments = {
     'content': null
 };
 let picturesIds = [];
-let pictures = [];
+let picturesUrlsArr = [];
 let location = {};
 let allRestaurants = [];
 
@@ -28,8 +28,8 @@ function pageLoaded(args) {
     page.bindingContext = vmModule.homeViewModel;
     vmModule.homeViewModel.setDrawerTransition(page, new drawerModule.ScaleDownPusherTransition());
 
-    restaurants = global.everlive.data('Restaurants');
-    restaurants.get().then(function(data) {
+    restaurantsDb = global.everlive.data('Restaurants');
+    restaurantsDb.get().then(function(data) {
         allRestaurants = data;
     });
 }
@@ -39,16 +39,17 @@ function getRestaurants() {
     let commentsDb = global.everlive.data('Comments');
     let randomRestaurant = Math.floor(Math.random() * allRestaurants.count) + 0;
 
-    restaurants.get()
+    restaurantsDb.get()
         .then(function(data) {
             let logoId = data.result[randomRestaurant].Logo;
             stars = data.result[randomRestaurant].Stars;
             description = data.result[randomRestaurant].Description;
             name = data.result[randomRestaurant].Name;
-            location = data.result[randomRestaurant].location;
+            location = data.result[randomRestaurant].Location;
             commentsIds = data.result[randomRestaurant].Comments;
             picturesIds = data.result[randomRestaurant].Pictures;
 
+            console.log(location.latitude);
             global.everlive.files.getDownloadUrlById(logoId)
                 .then(function(downloadUrl) {
                         logoUrl = downloadUrl;
@@ -88,7 +89,7 @@ function getRestaurants() {
                     for (var i in res.result) {
                         global.everlive.files.getDownloadUrlById(res.result[i].Image)
                             .then(function(downloadUrl) {
-                                pictures.push(downloadUrl);
+                                picturesUrlsArr.push(downloadUrl);
                             });
                     }
                 });
@@ -237,17 +238,26 @@ function goToDetails(args) {
 
             // if (applicationSettings.getBoolean("hasLocation")) {
             if (true) {
-            	console.dir(pictures);
                 let topmost = frameModule.topmost();
                 //console.log(logoUrl);
                 var navigationEntry = {
                     moduleName: "./views/details/details",
-                    context: { logoUrl: logoUrl, imageUrl: imageUrl },
+                    context: {
+                        logoUrl: logoUrl,
+                        name: name,
+                        stars: stars,
+                        description: description,
+                        location: location,
+                        imageUrl: imageUrl,
+                        commentsArr: commentsArr,
+                        picturesUrlsArr: picturesUrlsArr
+                    },
                     animated: true,
                     backstackVisible: true
                 };
 
-                pictures = [];
+                commentsArr = [];
+                picturesUrlsArr = [];
                 topmost.navigate(navigationEntry);
             } else {
                 let toast = toastModule.makeText('Find your location first!', 5000);
