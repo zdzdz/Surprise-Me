@@ -59,13 +59,11 @@ function getRestaurants() {
             filter.where().isin('Id', commentsIds);
 
             commentsDb.get(filter).then(function(res) {
-
                 for (var i in res.result) {
                     let comments = {};
                     comments.content = res.result[i].Content;
                     comments.sender = res.result[i].Sender;
                     commentsArr.push(comments);
-                    console.dir(commentsArr);
                 }
             });
         })
@@ -237,9 +235,6 @@ function goToDetails(args) {
             // if (applicationSettings.getBoolean("hasLocation")) {
             if (true) {
                 let topmost = frameModule.topmost();
-                // for(var i in commentsArr){
-                // console.dir(commentsArr[i]);
-                // }
 
                 var navigationEntry = {
                     moduleName: "./views/details/details",

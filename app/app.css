@@ -5,7 +5,7 @@
 }
 
 button {
-    font-size: 42;
+    font-size: 15;
     horizontal-align: center;
 }
 
@@ -43,9 +43,13 @@ button {
 }
 
 #locationBtn {
-    width: 200;
+    background-size: 360 90;
+    width: 180;
+    height: 43;
     horizontal-align: center;
     margin-top: 50;
+    background-image: url("res://location");
+    background-repeat: no-repeat;
 }
 
 #textLabel {
@@ -72,4 +76,10 @@ button {
     width: 500;
     height:700;
     background-color: #000;
+}
+
+#showOnMap {
+    background-image: url("res://map");
+    background-size: 110 110;
+    background-repeat: no-repeat;
 }

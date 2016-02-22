@@ -3,7 +3,7 @@
         <drawer:RadSideDrawer.mainContent>
             <GridLayout rows="auto, *" columns="*">
                 <GridLayout rows="auto, *" columns="*" row="0">
-                    <Image row="0" src="res://location" textWrap="true" tap="{{ enableLocationTap }}" id="locationBtn" />
+                    <Button row="0" tap="{{ enableLocationTap }}" id="locationBtn" />
                     <AbsoluteLayout row="1">
                         <Image  id="locationIcon" left="50" top="10" width="40" height="40"/>
                         <Label id="textLabel" left="100" top="10" textWrap="true" />

@@ -1,6 +1,10 @@
-<Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="navigatedTo" actionBarHidden="false">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="navigatedTo" actionBarHidden="false">
     <StackLayout>
-        <Button text="Add Comment" tap="goToComments" />
+    	<GridLayout rows="auto" columns="auto, auto">
+    	    <Button text="Add Comment" tap="goToComments" col="0" />
+    	    <Button id="showOnMap" tap="showOnMap" col="1"/>
+    	</GridLayout>
+        
         <Label text="{{ name }}" textWrap="true" class="title" />
         <Label text="{{ description }}" />
         <Label text="{{ stars }}" />

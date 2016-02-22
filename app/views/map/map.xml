@@ -1,6 +1,6 @@
-<Page xmlns:maps="nativescript-googlemaps" navigatedTo="onNavigatedTo">
-    <GridLayout rows="auto, *">
-        <Label row="0" text="{{ location, 'lat: ' + location.latitude + ', long: ' + location.longitude + ', alt: ' + location.altitude }}"/>
-        <maps:TnsGoogleMaps row="1" marker="{{ location }}" id="map"/>
+<Page xmlns:maps="nativescript-google-maps-sdk" navigatedTo="onNavigatedTo">
+    <GridLayout>
+        <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}" 
+        zoom="18" bearing="0"  tilt="0" mapReady="onMapReady" />
     </GridLayout>
 </Page>
