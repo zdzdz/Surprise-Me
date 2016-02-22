@@ -4,7 +4,6 @@ let vmModule = require("./comment-view-model");
 let textFieldModule = require("ui/text-field");
 let view = require("ui/core/view");
 let frameModule = require('ui/frame');
-//let textMultiline = require('ui/text-multi-line');
 let observableAuthor = require("data/observable");
 let observableComment = require("data/observable");
 let Toast = require("nativescript-toast");

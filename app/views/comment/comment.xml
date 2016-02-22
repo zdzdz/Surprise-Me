@@ -6,7 +6,7 @@
         </StackLayout>
         <StackLayout orientation="horizontal">
             <Label text="Your Comment"  width="120" />
-            <TextMultiLine text="{{comment}}" width="200" height="200"/>
+            <TextView text="{{comment}}" width="200" height="200"/>
         </StackLayout>
         <Button tap="sendComment" id="sendCommentButton" text="Send" width="200"/>
         <Label id="result" textWrap="true"/>

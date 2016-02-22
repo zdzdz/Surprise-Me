@@ -83,3 +83,26 @@ button {
     background-size: 110 110;
     background-repeat: no-repeat;
 }
+
+#commentsContainer {
+    padding-left: 20;
+    padding-right: 20;
+}
+
+#sender{
+    font-size: 14;
+    text-decoration: underline;
+}
+
+#content {
+    margin-top: 10;
+    font-size: 16;
+}
+
+#addCommment {
+    background-image: url("res://comment");
+    background-size: 200 50;
+    width: 100;
+    background-repeat: no-repeat;
+    horizontal-align: center;
+}
