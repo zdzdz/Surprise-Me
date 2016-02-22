@@ -24,6 +24,12 @@ function goToImageViewer(args){
             topmost.navigate(navigationEntry);
 }
 
+function goToComments(args){
+	let topmost = frameModule.topmost();
+    topmost.navigate("./views/comment/comment");
+}
+
 exports.pageLoaded = pageLoaded;
 exports.navigatedTo = navigatedTo;
 exports.goToImageViewer = goToImageViewer;
+exports.goToComments = goToComments;

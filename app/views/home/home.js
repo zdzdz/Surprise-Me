@@ -49,7 +49,6 @@ function getRestaurants() {
             commentsIds = data.result[randomRestaurant].Comments;
             picturesIds = data.result[randomRestaurant].Pictures;
 
-            console.log(location.latitude);
             global.everlive.files.getDownloadUrlById(logoId)
                 .then(function(downloadUrl) {
                         logoUrl = downloadUrl;
@@ -235,11 +234,11 @@ function goToDetails(args) {
                 duration: 80
             });
         }).then(function() {
-
             // if (applicationSettings.getBoolean("hasLocation")) {
             if (true) {
                 let topmost = frameModule.topmost();
-                //console.log(logoUrl);
+                console.dir(commentsArr[1]);
+                
                 var navigationEntry = {
                     moduleName: "./views/details/details",
                     context: {

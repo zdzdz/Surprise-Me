@@ -1,5 +1,7 @@
 <Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="navigatedTo" actionBarHidden="false">
     <StackLayout>
+    	<Button text="Add Comment" tap="goToComments" />
+    	
         <Label text="{{ name }}" textWrap="true" class="title" />
         <Label text="{{ description }}" />
         <Label text="{{ stars }}" />
@@ -7,10 +9,16 @@
         <Label text="{{ location.longitude }}" />
         <Image id='logo' src="{{ logoUrl }}" tap="goToImageViewer" class="pictures" />
         <Image src="{{ imageUrl }}" tap="goToImageViewer" class="pictures" />
-        <ListView items="{{ commentsArr }}">
+        <!-- <ListView items="{{ commentsArr }}">
             <ListView.itemTemplate>
-                <Label text="{{ comments.sender || 'Guest' }}" textWrap="true" class="title" />
-                <Label text="{{ comments.content }}" textWrap="true" class="title" />
+                <Label text="{{ $value }}" textWrap="true" class="title" />
+                <Label text="{{ $value }}" textWrap="true" class="title" />
+            </ListView.itemTemplate>
+        </ListView> -->
+        <ListView items="{{ picturesUrlsArr }}">
+            <ListView.itemTemplate>
+                <Image src="{{ $value }}" width="50" height="30" tap="goToImageViewer" />
+                
             </ListView.itemTemplate>
         </ListView>
     </StackLayout>
