@@ -5,26 +5,49 @@ let frameModule = require('ui/frame');
 let drawerModule = require("nativescript-telerik-ui/sidedrawer");
 let applicationSettings = require("application-settings");
 let toastModule = require("nativescript-toast");
+let Everlive = require("../../everlive-sdk/everlive.all.min");
+let restaurants;
 let logoUrl = null;
 let imageUrl = null;
-let pictureId = null;
-let isFinished = false;
+let stars = null;
+let description = null;
+let name = null;
+let commentsIds = [];
+let commentsArr = [];
+let comments = {
+    'sender': null,
+    'content': null
+};
+let picturesIds = [];
+let pictures = [];
+let location = {};
+let allRestaurants = [];
 
 function pageLoaded(args) {
     let page = args.object;
     page.bindingContext = vmModule.homeViewModel;
     vmModule.homeViewModel.setDrawerTransition(page, new drawerModule.ScaleDownPusherTransition());
-    
+
+    restaurants = global.everlive.data('Restaurants');
+    restaurants.get().then(function(data) {
+        allRestaurants = data;
+    });
 }
 
-function getRestaurants(){
-	let restaurants = global.everlive.data('Restaurants');
-    let pictures = global.everlive.data('Pictures');
+function getRestaurants() {
+    let picturesDb = global.everlive.data('Pictures');
+    let commentsDb = global.everlive.data('Comments');
+    let randomRestaurant = Math.floor(Math.random() * allRestaurants.count) + 0;
 
     restaurants.get()
         .then(function(data) {
-            let logoId = data.result[0].Logo;
-            pictureId = data.result[0].Pictures[0];
+            let logoId = data.result[randomRestaurant].Logo;
+            stars = data.result[randomRestaurant].Stars;
+            description = data.result[randomRestaurant].Description;
+            name = data.result[randomRestaurant].Name;
+            location = data.result[randomRestaurant].location;
+            commentsIds = data.result[randomRestaurant].Comments;
+            picturesIds = data.result[randomRestaurant].Pictures;
 
             global.everlive.files.getDownloadUrlById(logoId)
                 .then(function(downloadUrl) {
@@ -33,23 +56,42 @@ function getRestaurants(){
                     function(error) {
 
                     });
-        }).then(function() {
-            pictures.get()
+        })
+        .then(function() {
+            let filter = new Everlive.Query();
+            filter.where().isin('Id', commentsIds);
+
+            commentsDb.get(filter).then(function(res) {
+                for (var i = 0; i < res.count; i += 1) {
+                    comments.content = res.result[i].Content;
+                    comments.sender = res.result[i].Sender;
+                    commentsArr.push(comments);
+                }
+            });
+        })
+        .then(function() {
+            let filter = new Everlive.Query();
+            filter.where().isin('Id', picturesIds);
+
+            picturesDb.get(filter)
                 .then(function(res) {
                     let imageId = res.result[0].Image;
-                    console.log(imageId);
+
                     global.everlive.files.getDownloadUrlById(imageId)
                         .then(function(downloadUrl) {
-                                console.log(downloadUrl);
                                 imageUrl = downloadUrl;
                             },
                             function(error) {
 
                             });
 
+                    for (var i in res.result) {
+                        global.everlive.files.getDownloadUrlById(res.result[i].Image)
+                            .then(function(downloadUrl) {
+                                pictures.push(downloadUrl);
+                            });
+                    }
                 });
-        }).then(function(res){
-        	isFinished = true;
         });
 }
 
@@ -72,6 +114,9 @@ function goToDetails(args) {
             },
             rotate: 360,
             duration: 500
+        })
+        .then(function() {
+            getRestaurants();
         })
         .then(function() {
             return view.animate({
@@ -189,23 +234,23 @@ function goToDetails(args) {
                 duration: 80
             });
         }).then(function() {
-            
-            if (applicationSettings.getBoolean("hasLocation")) {
-            	getRestaurants();
-            	if(isFinished){
-            		let topmost = frameModule.topmost();
-            		//console.log(logoUrl);
-            		var navigationEntry = {
-                		moduleName: "./views/details/details",
-                		context: { logoUrl: logoUrl, imageUrl: imageUrl },
-               	 		animated: true,
-                		backstackVisible: true
-            		};
 
-                	topmost.navigate(navigationEntry);
-            	}
+            // if (applicationSettings.getBoolean("hasLocation")) {
+            if (true) {
+            	console.dir(pictures);
+                let topmost = frameModule.topmost();
+                //console.log(logoUrl);
+                var navigationEntry = {
+                    moduleName: "./views/details/details",
+                    context: { logoUrl: logoUrl, imageUrl: imageUrl },
+                    animated: true,
+                    backstackVisible: true
+                };
+
+                pictures = [];
+                topmost.navigate(navigationEntry);
             } else {
-            	let toast = toastModule.makeText('Find your location first!', 5000);
+                let toast = toastModule.makeText('Find your location first!', 5000);
                 toast.show();
             }
         });
