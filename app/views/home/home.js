@@ -3,6 +3,8 @@
 let vmModule = require("./home-view-model");
 let frameModule = require('ui/frame');
 let drawerModule = require("nativescript-telerik-ui/sidedrawer");
+let applicationSettings = require("application-settings");
+let toastModule = require("nativescript-toast");
 let logoUrl = null;
 let imageUrl = null;
 let pictureId = null;
@@ -43,9 +45,6 @@ function pageLoaded(args) {
 
                 });
         });
-
-
-
 }
 
 function goToFavourites() {
@@ -192,7 +191,12 @@ function goToDetails(args) {
                 animated: true,
                 backstackVisible: true
             };
-            topmost.navigate(navigationEntry);
+            if (applicationSettings.getBoolean("hasLocation")) {
+                topmost.navigate(navigationEntry);
+            } else {
+            	let toast = toastModule.makeText('Find your location first!', 5000);
+                toast.show();
+            }
         });
 }
 

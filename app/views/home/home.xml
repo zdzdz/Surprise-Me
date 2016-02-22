@@ -2,8 +2,13 @@
     <drawer:RadSideDrawer id="sideDrawer">
         <drawer:RadSideDrawer.mainContent>
             <GridLayout rows="auto, *" columns="*">
-                <Image row="0" src="res://location" textWrap="true" 
-                tap="{{ enableLocationTap }}" id="locationBtn"/>
+                <GridLayout rows="auto, *" columns="*" row="0">
+                    <Image row="0" src="res://location" textWrap="true" tap="{{ enableLocationTap }}" id="locationBtn" />
+                    <AbsoluteLayout row="1">
+                        <Image  id="locationIcon" left="50" top="10" width="40" height="40"/>
+                        <Label id="textLabel" left="100" top="10" textWrap="true" />
+                    </AbsoluteLayout>
+                </GridLayout>
                 <Image src="res://restaurant" id="restBtn" row="1" tap="goToDetails" />
             </GridLayout>
         </drawer:RadSideDrawer.mainContent>
@@ -13,12 +18,10 @@
                     <Label text="Where would you eat today?" />
                 </StackLayout>
                 <StackLayout class="drawerMenuContent">
-                    <Label text="Favourites" textWrap="true" class="drawerMenuItem" tap="goToFavourites"/>
-                    <Label text="Random Restaurant" textWrap="true" class="drawerMenuItem"/>
-                    <Label text="Get Location" textWrap="true" 
-                    class="drawerMenuItem" />
-                    <Label text="Hello" textWrap="true" 
-                    class="drawerMenuItem" />
+                    <Label text="Favourites" textWrap="true" class="drawerMenuItem" tap="goToFavourites" />
+                    <Label text="Random Restaurant" textWrap="true" class="drawerMenuItem" />
+                    <Label text="Get Location" textWrap="true" class="drawerMenuItem" />
+                    <Label text="Hello" textWrap="true" class="drawerMenuItem" />
                 </StackLayout>
             </StackLayout>
         </drawer:RadSideDrawer.drawerContent>

@@ -4,12 +4,16 @@ let observable = require("data/observable");
 let frameModule = require("ui/frame");
 let drawerModule = require("nativescript-telerik-ui/sidedrawer");
 let geolocation = require("nativescript-geolocation");
-var dialogs = require("ui/dialogs");
+let dialogs = require("ui/dialogs");
+let toastModule = require("nativescript-toast");
+let applicationSettings = require("application-settings");
+let view = require('ui/core/view');
 
 class HomeViewModel extends observable.Observable {
     constructor() {
         super();
         this.set("mainContentText", "Test");
+        applicationSettings.setBoolean("hasLocation", false);
     }
 
     setDrawerTransition(view, transition) {
@@ -29,9 +33,24 @@ class HomeViewModel extends observable.Observable {
                 }
             });
         } else {
-            var location = geolocation.getCurrentLocation({timeout: 5000}).
+            var location = geolocation.getCurrentLocation({ timeout: 5000 }).
             then(function(loc) {
                 if (loc) {
+                    if (loc.longitude > 23.457387 && loc.longitude < 23.229088 &&
+                        loc.latitude > 42.802550 && loc.latitude < 42.594543) {
+                        let toast = toastModule.makeText('Sorry. No restaurants outside of Sofia.');
+                        toast.show();
+                        applicationSettings.setBoolean("hasLocation", false);
+                    } else {
+                        let toast = toastModule.makeText('Good to go.');
+                        toast.show();
+                        applicationSettings.setBoolean("hasLocation", true);
+                        let label = frameModule.topmost().getViewById("textLabel");
+                        let locationIcon = frameModule.topmost().getViewById("locationIcon");
+                        label.text = "You are in Sofia!";
+                        locationIcon.src = "res://loc";
+                    }
+
                     console.log(loc.latitude);
                     console.log(loc.longitude);
                 }

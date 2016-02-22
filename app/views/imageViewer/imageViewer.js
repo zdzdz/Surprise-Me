@@ -10,27 +10,28 @@ function pageLoaded(args) {
     let page = args.object;
 
     attachEvents(page);
+    console.dir(AbsoluteLayout);
 }
 
 function attachEvents(page) {
     let pic = view.getViewById(page, 'imgViewer');
+    let top = AbsoluteLayout.getTop(pic);
+    let left = AbsoluteLayout.getLeft(pic);
 
     let initialSize = {
         width: initialWidth,
         height: initialHeight
     };
 
-    pic.top = 50;
     pic.width = 360;
 
     pic.on('doubleTap', function(args) {
         pic.width = 360;
+        pic.left = top;
+        pic.top = top;
     });
 
     pic.on('pan', function(args) {
-        let top = AbsoluteLayout.getTop(pic);
-        let left = AbsoluteLayout.getLeft(pic);
-
         top += args.deltaY;
         left += args.deltaX;
 
