@@ -3,7 +3,7 @@
         <ActionBar title="Details">
             <NavigationButton tap="goBack" android.systemIcon="ic_menu_back" />
             <ActionBar.actionItems>
-                <ActionItem ios.systemIcon="4" android.systemIcon="ic_menu_add" />
+                <ActionItem ios.systemIcon="4" android.systemIcon="ic_menu_add" tap="addToFavourites" />
             </ActionBar.actionItems>
         </ActionBar>
     </Page.actionBar>
@@ -27,13 +27,14 @@
                     </ScrollView>
                 </StackLayout>
                 <StackLayout row="1">
-                    <ListView items="{{ picturesUrlsArr }}">
-                        <ListView.itemTemplate>
-                            <AbsoluteLayout>
-                                <Image src="{{ $value }}" class="images" tap="goToImageViewer" left="50" />
-                            </AbsoluteLayout>
-                        </ListView.itemTemplate>
-                    </ListView>
+                    <Repeater items="{{ picturesUrlsArr }}">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="horizontal" />
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                                <Image src="{{ $value }}" class="images" tap="goToImageViewer"  />
+                        </Repeater.itemTemplate>
+                    </Repeater>
                     <!-- <Image src="{{ imageUrl }}" tap="goToImageViewer" class="images" /> -->
                 </StackLayout>
             </GridLayout>

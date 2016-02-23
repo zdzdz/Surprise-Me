@@ -4,11 +4,12 @@ let vmModule = require("./comment-view-model");
 let frameModule = require('ui/frame');
 let applicationSettings = require("application-settings");
 let Toast = require("nativescript-toast");
+let dialogs = require("ui/dialogs");
 let currentRestName;
 let currentRestId;
 let commentId;
 
- function loadSignUpView (args)  {
+function loadSignUpView(args) {
     let page = args.object;
     page.bindingContext = vmModule.commentViewModel;
     currentRestName = applicationSettings.getString('CurrentRestName');
@@ -16,39 +17,48 @@ let commentId;
     //console.log(currentRestId);
 }
 
- function sendComment(args){
+function sendComment(args) {
     let sender = vmModule.commentViewModel.author;
     let content = vmModule.commentViewModel.content;
+
+    if (!sender || !content) {
+        dialogs.alert("Fields cannot be empty!").then(function(result) {
+                if (result) {
+                    
+                }
+            });
+        return;
+    }
 
     let commentsDb = global.everlive.data('Comments');
     commentsDb.create({
         'Sender': sender,
         'Content': content,
         'RestaurantName': currentRestName
-    }, function(data){
-    //     commentId = data.result.Id;
-    //     let restaurantsDb = global.everlive.data('Restaurants');
-    //     restaurantsDb.updateSingle({ Id: currentRestId, 'Comments': commentId},
-    // function(data){
-    // },
-    // function(error){
-    // });
-    
-    vmModule.commentViewModel.author = "";
-    vmModule.commentViewModel.comment = "";
-    }, function(error){
+    }, function(data) {
+        //     commentId = data.result.Id;
+        //     let restaurantsDb = global.everlive.data('Restaurants');
+        //     restaurantsDb.updateSingle({ Id: currentRestId, 'Comments': commentId},
+        // function(data){
+        // },
+        // function(error){
+        // });
+
+        vmModule.commentViewModel.author = "";
+        vmModule.commentViewModel.comment = "";
+    }, function(error) {
         let toast = Toast.makeText(JSON.stringify(error));
         toast.show();
     });
 
     let toast = Toast.makeText("Comment sent!");
-	toast.show();
+    toast.show();
 
-	let topmost = frameModule.topmost();
+    let topmost = frameModule.topmost();
     topmost.goBack();
 }
 
-function goBack(args){
+function goBack(args) {
     let topmost = frameModule.topmost();
     topmost.goBack();
 }
@@ -56,4 +66,3 @@ function goBack(args){
 exports.loadSignUpView = loadSignUpView;
 exports.sendComment = sendComment;
 exports.goBack = goBack;
-

@@ -3,9 +3,15 @@
 let vmModule = require("./details-view-model");
 let frameModule = require('ui/frame');
 let applicationSettings = require("application-settings");
+let sqlite = require('nativescript-sqlite');
+let ObservableArray = require("data/observable-array").ObservableArray;
+var dbname = 'favourites.sqlite';
+var db = null;
 let latitude;
 let longitude;
 let restName;
+let stars;
+let description;
 let restId;
 
 function navigatedTo(args) {
@@ -14,6 +20,8 @@ function navigatedTo(args) {
     latitude = page.navigationContext.location.latitude;
     longitude = page.navigationContext.location.longitude;
     restName = page.navigationContext.name;
+    stars = page.navigationContext.stars;
+    description = page.navigationContext.description;
     restId = page.navigationContext.restId;
     applicationSettings.setString('CurrentRestName', restName);
     applicationSettings.setString('CurrentRestId', restId);
@@ -50,8 +58,29 @@ function showOnMap(args){
     topmost.navigate(navigationEntry);
 }
 
+
+function addToFavourites(){
+	if (!sqlite.exists(dbname)) {
+        sqlite.copyDatabase(dbname);
+    }
+
+    console.log(sqlite.exists(dbname));
+
+    new sqlite(dbname, function(err, dbConnection) {
+	if (err) {
+	    console.log(err);
+	}
+        db = dbConnection;
+        db.resultType(sqlite.RESULTSASARRAY);
+        db.valueType(sqlite.VALUESARENATIVE);
+    });
+
+    db.execSQL("insert into favourites ('restName', 'stars', 'desription') values (restName, stars, description)");
+}
+
 exports.navigatedTo = navigatedTo;
 exports.goToImageViewer = goToImageViewer;
 exports.goToComments = goToComments;
 exports.showOnMap = showOnMap;
 exports.goBack = goBack;
+exports.addToFavourites = addToFavourites;

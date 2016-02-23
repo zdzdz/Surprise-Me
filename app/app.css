@@ -120,7 +120,7 @@ button {
 .images {
     width: 50;
     height: 50;
-    margin: 0, 50, 0, 0;
+    margin: 0, 0, 0, 10;
 }
 
 #decription {
