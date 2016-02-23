@@ -1,5 +1,10 @@
 <Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd"
 	navigatingTo="navigatedTo">
+	<Page.actionBar>
+        <ActionBar title="Viewer" >
+            <NavigationButton tap="goBack" android.systemIcon="ic_menu_back" />
+        </ActionBar>
+    </Page.actionBar>
 	<AbsoluteLayout id="container">
 	    <Image src="{{ picture }}" id="imgViewer" />
    	</AbsoluteLayout>

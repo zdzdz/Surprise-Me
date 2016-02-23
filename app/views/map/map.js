@@ -1,7 +1,8 @@
 'use strict';
 
 let geolocation = require("nativescript-geolocation");
-var mapsModule = require("nativescript-google-maps-sdk");
+let mapsModule = require("nativescript-google-maps-sdk");
+let frameModule = require('ui/frame');
 let latitude;
 let longitude;
 let restName;
@@ -24,5 +25,11 @@ function onMapReady(args) {
   mapView.addMarker(marker);
 }
 
+function goBack(args){
+    let topmost = frameModule.topmost();
+    topmost.goBack();
+}
+
 exports.onNavigatedTo = onNavigatedTo;
 exports.onMapReady = onMapReady;
+exports.goBack = goBack;

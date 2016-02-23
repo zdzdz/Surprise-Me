@@ -58,6 +58,7 @@ function getRestaurants() {
         .then(function() {
             var filter = new Everlive.Query();
             filter.where().isin('Id', commentsIds);
+            //filter.where().eq('RestaurantName', name);
             
             commentsDb.get(filter).then(function(res) {
                 for (var i in res.result) {

@@ -1,4 +1,9 @@
 <Page xmlns:maps="nativescript-google-maps-sdk" navigatedTo="onNavigatedTo">
+	<Page.actionBar>
+        <ActionBar title="Map" >
+            <NavigationButton tap="goBack" android.systemIcon="ic_menu_back" />
+        </ActionBar>
+    </Page.actionBar>
     <GridLayout>
         <maps:mapView latitude="{{ latitude }}" longitude="{{ longitude }}" 
         zoom="18" bearing="0"  tilt="0" mapReady="onMapReady" />

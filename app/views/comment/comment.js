@@ -17,8 +17,8 @@ let commentId;
 }
 
  function sendComment(args){
-    let sender = vmModule.commentViewModel.getUserData().author;
-    let content = vmModule.commentViewModel.getUserData().content;
+    let sender = vmModule.commentViewModel.author;
+    let content = vmModule.commentViewModel.content;
 
     let commentsDb = global.everlive.data('Comments');
     commentsDb.create({
@@ -33,6 +33,9 @@ let commentId;
     // },
     // function(error){
     // });
+    
+    vmModule.commentViewModel.author = "";
+    vmModule.commentViewModel.comment = "";
     }, function(error){
         let toast = Toast.makeText(JSON.stringify(error));
         toast.show();
@@ -45,6 +48,12 @@ let commentId;
     topmost.goBack();
 }
 
+function goBack(args){
+    let topmost = frameModule.topmost();
+    topmost.goBack();
+}
+
 exports.loadSignUpView = loadSignUpView;
 exports.sendComment = sendComment;
+exports.goBack = goBack;
 

@@ -1,4 +1,9 @@
 <Page loaded="loadSignUpView">
+	<Page.actionBar>
+        <ActionBar title="Add a comment" >
+            <NavigationButton tap="goBack" android.systemIcon="ic_menu_back" />
+        </ActionBar>
+    </Page.actionBar>
     <StackLayout>
         <Label text="Your Name"  class="comment"/>
         <TextField text="{{author}}" width="300"/>

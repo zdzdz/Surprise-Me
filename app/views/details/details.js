@@ -35,6 +35,11 @@ function goToComments(args){
     topmost.navigate("./views/comment/comment");
 }
 
+function goBack(args){
+	let topmost = frameModule.topmost();
+    topmost.goBack();
+}
+
 function showOnMap(args){
 	let topmost = frameModule.topmost();
 	var navigationEntry = {
@@ -49,3 +54,4 @@ exports.navigatedTo = navigatedTo;
 exports.goToImageViewer = goToImageViewer;
 exports.goToComments = goToComments;
 exports.showOnMap = showOnMap;
+exports.goBack = goBack;

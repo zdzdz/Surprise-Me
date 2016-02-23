@@ -1,3 +1,9 @@
 <Page loaded="pageLoaded" xmlns="http://www.nativescript.org/tns.xsd">
+	<Page.actionBar>
+        <ActionBar title="Favorite restaurants" >
+            <NavigationButton tap="goBack" android.systemIcon="ic_menu_back" />
+        </ActionBar>
+    </Page.actionBar>
+	
     <Label text="Favourites" textWrap="true" />
 </Page>

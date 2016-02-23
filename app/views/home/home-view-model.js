@@ -8,6 +8,7 @@ let dialogs = require("ui/dialogs");
 let toastModule = require("nativescript-toast");
 let applicationSettings = require("application-settings");
 let view = require('ui/core/view');
+let isOpen = false;
 
 class HomeViewModel extends observable.Observable {
     constructor() {
@@ -20,6 +21,19 @@ class HomeViewModel extends observable.Observable {
         let drawer = view.getViewById("sideDrawer");
         drawer.closeDrawer();
         drawer.drawerTransition = transition;
+    }
+
+    toggleDrawer() {
+        let drawer = frameModule.topmost().getViewById("sideDrawer");
+        
+        if (!isOpen) {
+            drawer.showDrawer();
+            isOpen = true;
+        } else {
+            drawer.closeDrawer();
+            isOpen =false;
+        }
+
     }
 
     enableLocationTap(args) {

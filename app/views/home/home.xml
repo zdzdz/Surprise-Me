@@ -1,4 +1,9 @@
 <Page loaded="pageLoaded" xmlns:drawer="nativescript-telerik-ui/sidedrawer" xmlns="http://www.nativescript.org/tns.xsd" class="page">
+    <Page.actionBar>
+        <ActionBar title="Surprise Me" >
+            <NavigationButton tap="{{ toggleDrawer }}" icon="res://ic_action_menu" />
+        </ActionBar>
+    </Page.actionBar>
     <drawer:RadSideDrawer id="sideDrawer">
         <drawer:RadSideDrawer.mainContent>
             <GridLayout rows="auto, *" columns="*">

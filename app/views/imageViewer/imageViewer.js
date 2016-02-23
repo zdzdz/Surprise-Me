@@ -1,6 +1,7 @@
 'use strict';
 
 let view = require('ui/core/view');
+let frameModule = require('ui/frame');
 let AbsoluteLayout = require('ui/layouts/absolute-layout')
     .AbsoluteLayout;
 let initialWidth;
@@ -65,5 +66,11 @@ function navigatedTo(args) {
     initialWidth = page.navigationContext.picture.width;
 }
 
+function goBack(args){
+    let topmost = frameModule.topmost();
+    topmost.goBack();
+}
+
 exports.pageLoaded = pageLoaded;
 exports.navigatedTo = navigatedTo;
+exports.goBack = goBack;
