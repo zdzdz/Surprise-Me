@@ -235,7 +235,7 @@ function goToDetails(args) {
                 duration: 80
             });
         }).then(function() {
-            // if (applicationSettings.getBoolean("hasLocation")) {
+             //if (applicationSettings.getBoolean("hasLocation")) {
             if (true) {
                 let topmost = frameModule.topmost();
                 

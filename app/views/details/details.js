@@ -5,8 +5,9 @@ let frameModule = require('ui/frame');
 let applicationSettings = require("application-settings");
 let sqlite = require('nativescript-sqlite');
 let ObservableArray = require("data/observable-array").ObservableArray;
-var dbname = 'favourites.sqlite';
-var db = null;
+let dbname = 'favourites.sqlite';
+let Toast = require("nativescript-toast");
+let db = null;
 let latitude;
 let longitude;
 let restName;
@@ -60,9 +61,9 @@ function showOnMap(args){
 
 
 function addToFavourites(){
-	if (!sqlite.exists(dbname)) {
-        sqlite.copyDatabase(dbname);
-    }
+	// if (!sqlite.exists(dbname)) {
+ //        sqlite.copyDatabase(dbname);
+ //    }
 
     console.log(sqlite.exists(dbname));
 
@@ -75,7 +76,10 @@ function addToFavourites(){
         db.valueType(sqlite.VALUESARENATIVE);
     });
 
-    db.execSQL("insert into favourites ('restName', 'stars', 'desription') values (restName, stars, description)");
+    db.execSQL("insert into favourites (restName) values (?)", restName);
+
+    let toast = Toast.makeText("Added to favourites!");
+    toast.show();
 }
 
 exports.navigatedTo = navigatedTo;

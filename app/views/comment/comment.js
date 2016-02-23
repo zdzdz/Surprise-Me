@@ -14,14 +14,14 @@ function loadSignUpView(args) {
     page.bindingContext = vmModule.commentViewModel;
     currentRestName = applicationSettings.getString('CurrentRestName');
     currentRestId = applicationSettings.getString('CurrentRestId');
-    //console.log(currentRestId);
 }
 
 function sendComment(args) {
     let sender = vmModule.commentViewModel.author;
-    let content = vmModule.commentViewModel.content;
+    let content = vmModule.commentViewModel.comment;
 
-    if (!sender || !content) {
+    if (vmModule.commentViewModel.author === "" ||
+     vmModule.commentViewModel.comment === "") {
         dialogs.alert("Fields cannot be empty!").then(function(result) {
                 if (result) {
                     
