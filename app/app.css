@@ -135,3 +135,19 @@ button {
 .innerPages {
     background-color: #fff;
 }
+
+.comment {
+    font-size: 15;
+    font-weight: bold;
+    horizontal-align: center;
+    margin:20,0,0,0;
+}
+
+#send {
+    margin-top: 50;
+    background-image: url("res://comment");
+    background-size: 300 90;
+    width: 150;
+    height: 45;
+    background-repeat: no-repeat;
+}

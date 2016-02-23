@@ -1,13 +1,18 @@
 'use strict';
 
-let vmModule = require("./comment-view-model");
-let textFieldModule = require("ui/text-field");
 let observable = require("data/observable");
-var view = require("ui/core/view");
 
 class CommentViewModel extends observable.Observable {
-    constructor(){
+    constructor() {
         super();
+    }
+
+    getUserData() {
+        let data = {
+            'content': this.comment,
+            'author': this.author
+        };
+        return data;
     }
 }
 

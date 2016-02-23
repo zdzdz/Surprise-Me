@@ -14,7 +14,7 @@ let description = null;
 let name = null;
 let commentsIds = [];
 let commentsArr = [];
-
+let restId = null;
 let picturesIds = [];
 let picturesUrlsArr = [];
 let location = {};
@@ -42,6 +42,7 @@ function getRestaurants() {
             stars = data.result[randomRestaurant].Stars;
             description = data.result[randomRestaurant].Description;
             name = data.result[randomRestaurant].Name;
+            restId = data.result[randomRestaurant].Id;
             location = data.result[randomRestaurant].Location;
             commentsIds = data.result[randomRestaurant].Comments;
             picturesIds = data.result[randomRestaurant].Pictures;
@@ -55,15 +56,16 @@ function getRestaurants() {
                     });
         })
         .then(function() {
-            let filter = new Everlive.Query();
+            var filter = new Everlive.Query();
             filter.where().isin('Id', commentsIds);
-
+            
             commentsDb.get(filter).then(function(res) {
                 for (var i in res.result) {
                     let comments = {};
                     comments.content = res.result[i].Content;
                     comments.sender = res.result[i].Sender;
                     commentsArr.push(comments);
+                    //console.log(comments.sender);
                 }
             });
         })
@@ -235,10 +237,11 @@ function goToDetails(args) {
             // if (applicationSettings.getBoolean("hasLocation")) {
             if (true) {
                 let topmost = frameModule.topmost();
-
+                
                 var navigationEntry = {
                     moduleName: "./views/details/details",
                     context: {
+                    	restId: restId,
                         logoUrl: logoUrl,
                         name: name,
                         stars: stars,

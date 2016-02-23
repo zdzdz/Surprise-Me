@@ -23,8 +23,10 @@ application.on(application.launchEvent, function (args) {
 application.on(application.exitEvent, function (args) {
     if (args.android) {
         applicationSettings.setBoolean("hasLocation", false);
+        //applicationSettings.setString('CurrentRestName', null);
     } else if (args.ios) {
         applicationSettings.setBoolean("hasLocation", false);
+        //applicationSettings.setString('CurrentRestName', null);
     }
 });
 

@@ -1,14 +1,10 @@
 <Page loaded="loadSignUpView">
     <StackLayout>
-        <StackLayout orientation="horizontal">
-            <Label text="Your Name" width="120"/>
-            <TextField text="{{author}}" width="200"/>
-        </StackLayout>
-        <StackLayout orientation="horizontal">
-            <Label text="Your Comment"  width="120" />
-            <TextView text="{{comment}}" width="200" height="200"/>
-        </StackLayout>
-        <Button tap="sendComment" id="sendCommentButton" text="Send" width="200"/>
-        <Label id="result" textWrap="true"/>
+        <Label text="Your Name"  class="comment"/>
+        <TextField text="{{author}}" width="300"/>
+        <Label text="Your Comment"   class="comment" />
+        <TextView text="{{comment}}" width="300" height="200"/>
+       <Button tap="sendComment" id="send" />
+       
     </StackLayout>
 </Page>

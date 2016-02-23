@@ -1,32 +1,44 @@
 'use strict';
 
 let vmModule = require("./comment-view-model");
-let textFieldModule = require("ui/text-field");
-let view = require("ui/core/view");
 let frameModule = require('ui/frame');
-let observableAuthor = require("data/observable");
-let observableComment = require("data/observable");
+let applicationSettings = require("application-settings");
 let Toast = require("nativescript-toast");
-
-
-
-var commentInfo = {
-    author: "", 
-    content: "", 
-};
-
-var page;
+let currentRestName;
+let currentRestId;
+let commentId;
 
  function loadSignUpView (args)  {
-    page = args.object;
-    page.bindingContext = commentInfo;
+    let page = args.object;
+    page.bindingContext = vmModule.commentViewModel;
+    currentRestName = applicationSettings.getString('CurrentRestName');
+    currentRestId = applicationSettings.getString('CurrentRestId');
+    //console.log(currentRestId);
 }
 
- function sendComment(){
-    var author = commentInfo.author;
-    var content = commentInfo.content;
+ function sendComment(args){
+    let sender = vmModule.commentViewModel.getUserData().author;
+    let content = vmModule.commentViewModel.getUserData().content;
 
-    var toast = Toast.makeText("Comment Send!");
+    let commentsDb = global.everlive.data('Comments');
+    commentsDb.create({
+        'Sender': sender,
+        'Content': content,
+        'RestaurantName': currentRestName
+    }, function(data){
+    //     commentId = data.result.Id;
+    //     let restaurantsDb = global.everlive.data('Restaurants');
+    //     restaurantsDb.updateSingle({ Id: currentRestId, 'Comments': commentId},
+    // function(data){
+    // },
+    // function(error){
+    // });
+    }, function(error){
+        let toast = Toast.makeText(JSON.stringify(error));
+        toast.show();
+    });
+
+    let toast = Toast.makeText("Comment sent!");
 	toast.show();
 
 	let topmost = frameModule.topmost();

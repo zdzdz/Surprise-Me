@@ -2,9 +2,11 @@
 
 let vmModule = require("./details-view-model");
 let frameModule = require('ui/frame');
+let applicationSettings = require("application-settings");
 let latitude;
 let longitude;
 let restName;
+let restId;
 
 function navigatedTo(args) {
     var page = args.object;
@@ -12,6 +14,9 @@ function navigatedTo(args) {
     latitude = page.navigationContext.location.latitude;
     longitude = page.navigationContext.location.longitude;
     restName = page.navigationContext.name;
+    restId = page.navigationContext.restId;
+    applicationSettings.setString('CurrentRestName', restName);
+    applicationSettings.setString('CurrentRestId', restId);
 }
 
 function goToImageViewer(args){
