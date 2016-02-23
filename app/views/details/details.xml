@@ -1,34 +1,46 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="navigatedTo" actionBarHidden="false">
-    <GridLayout rows="*, *" columns="*">
-        <StackLayout row="0">
-            <GridLayout rows="auto" columns="auto, auto">
-                
-                <Button id="showOnMap" tap="showOnMap" col="1" />
-            </GridLayout>
-            <Label text="{{ name }}" textWrap="true" class="title" />
-            <Label text="{{ description }}" />
-            <Label text="{{ stars }}" />
-            <Image id='logo' src="{{ logoUrl }}" tap="goToImageViewer" class="pictures" />
-            <Image src="{{ imageUrl }}" tap="goToImageViewer" class="pictures" />
-
-        </StackLayout>
-        <StackLayout row="1">
-        	<Button id="addCommment" tap="goToComments" />
-            <ListView items="{{ commentsArr }}">
-                <ListView.itemTemplate>
-                    <GridLayout rows="auto, auto" columns="*" id="commentsContainer">
-                        <Label text="{{ $value.sender }}" textWrap="true" row="0" id="sender" />
-                        <Label text="{{ $value.content }}" textWrap="true" row="1" id="content" />
-                    </GridLayout>
-                </ListView.itemTemplate>
-            </ListView>
-        </StackLayout>
-        <!--  <ListView items="{{ picturesUrlsArr }}">
-            <ListView.itemTemplate>
-                <StackLayout>
-                    <Image src="{{ $value }}" width="200" height="100" tap="goToImageViewer" />
-                </StackLayout>
-            </ListView.itemTemplate>
-        </ListView> -->
-    </GridLayout>
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="navigatedTo" actionBarHidden="false" class="innerPages">
+	<GridLayout rows="*, 200" columns="*">
+		<StackLayout row="0">
+			<GridLayout rows="auto" columns="auto, auto">
+				<Image id='logo' src="{{ logoUrl }}" tap="goToImageViewer" col="0" />
+				<GridLayout rows="auto, *,auto" columns="*" col="1">
+					<Label text="{{ name }}" textWrap="true" class="title" row="0" />
+					<Label text="{{ 'Stars: ' + stars }}" class="info" row="1" />
+					<StackLayout orientation="horizontal" row="2">
+						<Label text="Find on map:" class="info" />
+						<Button id="showOnMap" tap="showOnMap" />
+					</StackLayout>
+				</GridLayout>
+			</GridLayout>
+			<GridLayout rows="*, *" columns="*">
+				<StackLayout row="0">
+					<ScrollView>
+						<Label text="{{ description }}" textWrap="true" id="decription" />
+					</ScrollView>
+				</StackLayout>
+				<StackLayout row="1" >
+					<ListView items="{{ picturesUrlsArr }}">
+						<ListView.itemTemplate>
+							<AbsoluteLayout orientation="horizontal">
+								<Image src="{{ $value }}" class="images" tap="goToImageViewer" left="50" />
+							</AbsoluteLayout>
+						</ListView.itemTemplate>
+					</ListView>
+					
+					<!-- <Image src="{{ imageUrl }}" tap="goToImageViewer" class="images" /> -->
+				</StackLayout>
+			</GridLayout>
+		</StackLayout>
+		<StackLayout row="1">
+			<Button id="addCommment" tap="goToComments" />
+			<ListView items="{{ commentsArr }}">
+				<ListView.itemTemplate>
+					<GridLayout rows="auto, auto" columns="*" id="commentsContainer">
+						<Label text="{{ $value.sender }}" textWrap="true" row="0" id="sender" />
+						<Label text="{{ $value.content }}" textWrap="true" row="1" id="content" />
+					</GridLayout>
+				</ListView.itemTemplate>
+			</ListView>
+		</StackLayout>
+	</GridLayout>
 </Page>
