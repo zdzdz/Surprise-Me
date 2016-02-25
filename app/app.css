@@ -16,7 +16,8 @@ button {
 }
 
 .drawerContent {
-    background-color: #33FF66
+    background-image: url("res://pattern");
+    background-repeat: repeat;
 }
 
 .headerContent {
@@ -27,7 +28,9 @@ button {
 }
 
 .drawerMenuContent {
-    background-color: #00B82E;
+    color: black;
+    background-color: #D3D3D3;
+    opacity: 0.5;
     font-size: 16;
     padding: 10, 0, 10, 10;
 }
@@ -133,7 +136,8 @@ button {
 }
 
 .innerPages {
-    background-color: #fff;
+    background-image: url("res://pattern");
+    background-repeat: repeat;
 }
 
 .comment {

@@ -1,4 +1,4 @@
-<Page loaded="loadSignUpView">
+<Page loaded="loadSignUpView" class="innerPages">
 	<Page.actionBar>
         <ActionBar title="Add a comment" >
             <NavigationButton tap="goBack" android.systemIcon="ic_menu_back" />

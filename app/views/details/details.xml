@@ -27,6 +27,7 @@
                     </ScrollView>
                 </StackLayout>
                 <StackLayout row="1">
+                    <ScrollView>
                     <Repeater items="{{ picturesUrlsArr }}">
                         <Repeater.itemsLayout>
                             <StackLayout orientation="horizontal" />
@@ -35,6 +36,7 @@
                                 <Image src="{{ $value }}" class="images" tap="goToImageViewer"  />
                         </Repeater.itemTemplate>
                     </Repeater>
+                </ScrollView>
                     <!-- <Image src="{{ imageUrl }}" tap="goToImageViewer" class="images" /> -->
                 </StackLayout>
             </GridLayout>
